@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Cybersecurity Awareness Chatbot | S.L.M. Asri</title>
+    <meta name="description" content="AI-Powered Cybersecurity Awareness Chatbot - A project by Sulaiman Lebbe Muhammad Asri. Built with Python, Flask, HTML, CSS, JavaScript, and MySQL to deliver cybersecurity quizzes and awareness content.">
+    <!-- Google Fonts: Outfit and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+    
+        .company-hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, #020203 0%, #08080a 100%);
+        }
+        .company-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .company-logo-wrapper {
+            width: 380px;
+            max-width: 100%;
+            border-radius: var(--radius-md);
+            padding: 10px;
+            border: 2px solid rgba(59, 130, 246, 0.15);
+            background-color: #000;
+            box-shadow: var(--shadow-md), 0 0 30px rgba(59, 130, 246, 0.1);
+            transition: all var(--transition-normal);
+        }
+        .company-logo-wrapper:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md), 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+        .company-logo-img {
+            width: 100%;
+            border-radius: var(--radius-sm);
+        }
+        .service-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #3b82f6; /* Blue branding from logo */
+            background-color: rgba(59, 130, 246, 0.08);
+            padding: 3px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .founder-section {
+            padding: 80px 0;
+            background-color: var(--bg-primary);
+        }
+        .founder-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .founder-image-wrapper {
+            position: relative;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+        .founder-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: var(--radius-md);
+            z-index: 1;
+            pointer-events: none;
+            transition: all var(--transition-normal);
+        }
+        .founder-image-wrapper:hover::before {
+            top: -8px;
+            left: -8px;
+            border-color: var(--accent-primary);
+        }
+        .founder-img-card {
+            position: relative;
+            z-index: 2;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            background-color: var(--bg-secondary);
+            transition: all var(--transition-normal);
+        }
+        .founder-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(10%) contrast(105%);
+            transition: all var(--transition-normal);
+        }
+        .founder-image-wrapper:hover .founder-img {
+            filter: grayscale(0%) contrast(100%);
+            transform: scale(1.02);
+        }
+        .founder-title-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            background-color: rgba(59, 130, 246, 0.08);
+            padding: 3px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 768px) {
+            .founder-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .founder-image-wrapper {
+                max-width: 280px;
+            }
+            .company-logo-container {
+                order: -1;
+            }
+            .company-hero h1 {
+                font-size: 2.2rem !important;
+            }
+            .company-logo-wrapper {
+                max-width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header sticky">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" style="display: inline-flex; align-items: center; gap: 10px;">
+                <img src="assets/images/logo.jpg" alt="Asri Logo" class="header-logo-img" style="width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--accent-primary); object-fit: cover;">
+                <span>Asri<span class="logo-dot">.</span><span class="logo-m">Dev</span></span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="animation-video-resume.html" class="nav-link">Video Resume</a>
+                <a href="index.html#skills" class="nav-link">Skills & Languages</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html" class="btn btn-secondary nav-btn" style="padding: 6px 16px; font-size: 0.85rem; margin-left: 10px;">
+                    <i class="fas fa-arrow-left"></i> Back to Portfolio
+                </a>
+            </nav>
+            <div class="menu-toggle" id="mobileMenuBtn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+ 
+    <!-- Mobile Side Menu -->
+    <div class="mobile-nav" id="mobileNavMenu">
+        <a href="index.html#home" class="mobile-link">Home</a>
+        <a href="index.html#about" class="mobile-link">About</a>
+        <a href="animation-video-resume.html" class="mobile-link">Video Resume</a>
+        <a href="index.html#skills" class="mobile-link">Skills & Languages</a>
+        <a href="index.html#contact" class="mobile-link">Contact</a>
+        <a href="index.html" class="mobile-link" style="color: var(--accent-primary);">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+    </div>
+
+    <!-- Project Hero Section -->
+    <section class="company-hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="service-badge">Internship Project</div>
+                <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 16px; color: var(--text-primary);">
+                    AI-Powered <br><span class="text-coral">Cybersecurity Chatbot</span>
+                </h1>
+                <h3 style="font-family: var(--font-body); font-size: 1.25rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 24px;">
+                    Built by: <strong style="color: var(--accent-primary);">S.L.M. Asri</strong>
+                </h3>
+                <p class="hero-desc" style="max-width: 600px; margin-bottom: 32px;">
+                    A cybersecurity awareness chatbot built with Python, Flask, HTML, CSS, JavaScript, and MySQL. The platform delivers interactive quizzes and awareness content to help users learn safe digital practices through a friendly, conversational interface.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://github.com/SLM-Asri" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+                    <a href="index.html#contact" class="btn btn-secondary">Ask About This Project</a>
+                </div>
+            </div>
+            <div class="company-logo-container">
+                <div class="company-logo-wrapper">
+                    <img src="assets/images/chatbot-banner.jpg" alt="AI Cybersecurity Chatbot" class="company-logo-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="scroll-section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Features</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="skills-grid" style="margin-top: 40px;">
+                <!-- Card 1 -->
+                <div class="about-card-item" style="padding: 32px; border-color: rgba(59, 130, 246, 0.15);">
+                    <div class="card-icon" style="background-color: rgba(59, 130, 246, 0.08); color: #3b82f6;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Conversational Chatbot Interface</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            A user-friendly chatbot interface built with HTML, CSS, and JavaScript to guide users through cybersecurity awareness topics.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="about-card-item" style="padding: 32px; border-color: rgba(59, 130, 246, 0.15);">
+                    <div class="card-icon" style="background-color: rgba(59, 130, 246, 0.08); color: #3b82f6;">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 8px;">User Registration & Authentication</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Secure user registration and login features that let learners track their progress through the awareness modules.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="about-card-item" style="padding: 32px; border-color: rgba(59, 130, 246, 0.15);">
+                    <div class="card-icon" style="background-color: rgba(59, 130, 246, 0.08); color: #3b82f6;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Cybersecurity Quizzes</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Integrated quizzes and awareness content that reinforce good cybersecurity habits through interactive learning.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="about-card-item" style="padding: 32px; border-color: rgba(59, 130, 246, 0.15);">
+                    <div class="card-icon" style="background-color: rgba(59, 130, 246, 0.08); color: #3b82f6;">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 8px;">MySQL Database Connectivity</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Full database connectivity for user accounts, quiz data, and progress tracking, built on a Flask backend.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Developer Section -->
+    <section class="founder-section scroll-section">
+        <div class="container founder-container">
+            <div class="founder-image-wrapper">
+                <div class="founder-img-card">
+                    <img src="assets/images/hari-founder-chatbot.jpg" alt="S.L.M. Asri - Developer of the Cybersecurity Chatbot" class="founder-img">
+                </div>
+            </div>
+            <div class="founder-info-content">
+                <div class="founder-title-badge">About the Developer</div>
+                <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 8px;">Meet the Developer</h2>
+                <h3 style="font-family: var(--font-body); font-size: 1.2rem; font-weight: 500; color: #3b82f6; margin-bottom: 20px;">
+                    Sulaiman Lebbe Muhammad Asri <span style="color: var(--text-muted); font-size: 0.95rem; font-weight: 400; margin-left: 8px;">| HND IT Student, SLIATE Anuradhapura</span>
+                </h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 1.05rem;">
+                    As an HND IT student with a strong interest in cybersecurity fundamentals, I built this chatbot to make cybersecurity awareness more approachable and engaging for everyday users through simple, conversational learning.
+                </p>
+                <p style="color: var(--text-secondary); margin-bottom: 28px; font-size: 1.05rem;">
+                    The project combines a Python/Flask backend, MySQL database, and a responsive front-end built with HTML, CSS, and JavaScript &mdash; bringing together my full-stack skills to solve a real awareness problem.
+                </p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="https://github.com/SLM-Asri" target="_blank" rel="noopener" class="btn btn-primary">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                    <a href="index.html#contact" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Box -->
+    <section class="scroll-section">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Interested in this project?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 36px;">
+                Whether it's a technical question, a collaboration idea, or an internship opportunity &mdash; I'd love to hear from you.
+            </p>
+            <a href="mailto:mohammadasri553@gmail.com?subject=Cybersecurity Chatbot Project Inquiry" class="btn btn-primary" style="padding: 14px 40px; font-size: 1rem;">
+                <i class="fas fa-paper-plane"></i> Enquire Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Sulaiman Lebbe Muhammad Asri. All Rights Reserved.</p>
+            <p>Full-Stack Developer & HND IT Student</p>
+        </div>
+    </footer>
+
+    <!-- Scroll-to-Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sulaiman Lebbe Muhammad Asri | Full-Stack & Software Engineering Student</title>
+    <meta name="description" content="Professional Portfolio of Sulaiman Lebbe Muhammad Asri (S.L.M. Asri) - HND IT Student at SLIATE Anuradhapura, Full-Stack Web Developer, Mobile & Desktop App Developer, and AI/Cybersecurity Enthusiast.">
+    <!-- Google Fonts: Outfit and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fullscreen Loading Screen (Preloader) -->
+    <div id="preloader" class="preloader-overlay">
+        <div class="preloader-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; position: relative;">
+            <svg id="preloaderSvg" class="preloader-svg" viewBox="0 0 800 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="bar-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#f97316" />
+                        <stop offset="100%" stop-color="#ff3f1a" />
+                    </linearGradient>
+                    <pattern id="striped-shirt" width="6" height="6" patternUnits="userSpaceOnUse">
+                        <rect width="6" height="6" fill="#eff6ff" />
+                        <line x1="0" y1="0" x2="0" y2="6" stroke="#3b82f6" stroke-width="1.5" />
+                    </pattern>
+                </defs>
+                
+                <!-- Glowing Circuit Board trace background -->
+                <g class="preloader-circuit" stroke="rgba(249, 115, 22, 0.15)" stroke-width="1.5" fill="none" stroke-linecap="round">
+                    <path d="M 50,100 L 150,100 L 180,130 L 180,250 L 220,290" />
+                    <path d="M 100,50 L 100,150 L 130,180 L 250,180" />
+                    <path d="M 50,400 L 120,400 L 160,360 L 160,300 L 200,260" />
+                    
+                    <path d="M 750,100 L 650,100 L 620,130 L 620,200 L 590,230" />
+                    <path d="M 700,50 L 700,150 L 670,180 L 580,180" />
+                    <path d="M 750,400 L 680,400 L 640,360 L 640,300" />
+                    
+                    <circle cx="220" cy="290" r="3" fill="#f97316" />
+                    <circle cx="250" cy="180" r="3" fill="#f97316" />
+                    <circle cx="200" cy="260" r="3" fill="#f97316" />
+                    <circle cx="590" cy="230" r="3" fill="#f97316" />
+                    <circle cx="580" cy="180" r="3" fill="#f97316" />
+                </g>
+
+                <!-- Ground/Floor Line -->
+                <line x1="100" y1="418" x2="700" y2="418" stroke="#1e293b" stroke-width="3" stroke-linecap="round" />
+
+                <!-- Computer Monitor Stand -->
+                <path d="M 330,390 L 430,390 L 450,418 L 310,418 Z" fill="#1e293b" />
+                <path d="M 360,330 L 355,390 L 405,390 L 400,330 Z" fill="#334155" />
+
+                <!-- Computer Monitor Bezel -->
+                <rect x="200" y="100" width="360" height="230" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="4" />
+                <!-- Screen Area -->
+                <rect x="215" y="115" width="330" height="200" fill="#070a13" rx="4" />
+                <!-- Bezel Power Indicator (Pulsing Green) -->
+                <circle class="preloader-power-led" cx="380" cy="318" r="3" fill="#10b981" />
+
+                <!-- Screen Contents -->
+                <text class="preloader-loading-text" x="380" y="175" text-anchor="middle" font-family="'Outfit', sans-serif" font-size="24" font-weight="800" fill="#f97316" letter-spacing="2">LOADING</text>
+                <!-- Loading Progress Track -->
+                <rect x="250" y="200" width="260" height="14" rx="7" fill="#1e293b" />
+                <!-- Loading Progress Fill -->
+                <rect class="preloader-bar-fill" x="250" y="200" width="0" height="14" rx="7" fill="url(#bar-gradient)" />
+                <!-- Please Wait Text -->
+                <text class="preloader-wait-text" x="380" y="250" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#64748b" letter-spacing="1">Please Wait...</text>
+
+                <!-- Leaning Developer/Character (Right Side) -->
+                <g class="preloader-character">
+                    <!-- Neck -->
+                    <rect x="571" y="140" width="8" height="12" fill="#ffedd5" />
+                    <!-- Head -->
+                    <circle cx="575" cy="130" r="13" fill="#ffedd5" />
+                    <!-- Hair -->
+                    <path d="M 561,128 C 561,114 588,114 588,126 C 583,121 573,121 561,128 Z" fill="#475569" />
+                    <path d="M 562,126 L 565,134 L 568,128 Z" fill="#475569" />
+                    <!-- Face Details (Closed eye, calm expression looking at watch) -->
+                    <path d="M 566,131 Q 568,133 570,131" stroke="#475569" stroke-width="1.2" fill="none" />
+                    <path d="M 568,137 Q 570,139 572,137" stroke="#475569" stroke-width="1.2" fill="none" />
+                    <!-- Torso -->
+                    <path d="M 565,150 L 585,150 L 588,250 L 568,250 Z" fill="url(#striped-shirt)" />
+                    <!-- Standing Leg (Leaning) -->
+                    <path d="M 572,250 L 577,410" stroke="#1e293b" stroke-width="10" stroke-linecap="round" />
+                    <!-- Crossed Leg (Leaning relaxed) -->
+                    <path d="M 584,250 L 594,405" stroke="#0f172a" stroke-width="10" stroke-linecap="round" />
+                    <!-- Shoes -->
+                    <path d="M 572,410 C 572,408 584,408 586,410 C 586,414 570,414 572,410 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+                    <path d="M 589,405 C 589,403 601,403 603,405 C 603,409 587,409 589,405 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" />
+                    <!-- Leaning Arm (Leaning on top-right of monitor) -->
+                    <path d="M 565,153 Q 555,125 560,105" stroke="url(#striped-shirt)" stroke-width="9" fill="none" stroke-linecap="round" />
+                    <circle cx="560" cy="100" r="5.5" fill="#ffedd5" />
+                    <!-- Watch Arm (Bent, looking at wristwatch) -->
+                    <path d="M 585,153 L 596,178 L 580,180" stroke="url(#striped-shirt)" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="578" cy="180" r="5" fill="#ffedd5" />
+                    <circle class="preloader-watch-glow" cx="583" cy="180" r="2.5" fill="#f97316" />
+                </g>
+            </svg>
+            <!-- Enter Button (shown when fully loaded) -->
+            <button id="preloaderEnterBtn" class="btn btn-primary" style="display: none; background-color: var(--accent-primary); border-color: var(--accent-primary); color: #000; padding: 15px 45px; font-size: 1.1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 50px; box-shadow: 0 0 30px rgba(249, 115, 22, 0.5); cursor: pointer; transition: all 0.3s ease; position: absolute; z-index: 10000; top: 60%; transform: translateY(-50%);">
+                Enter Portfolio <i class="fas fa-chevron-right" style="margin-left: 8px;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Scroll-to-Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#home" class="logo" style="display: inline-flex; align-items: center; gap: 10px;">
+                <img src="assets/images/logo.jpg" alt="Asri Logo" class="header-logo-img" style="width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--accent-primary); object-fit: cover;">
+                <span>Asri<span class="logo-dot">.</span><span class="logo-m">Dev</span></span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="animation-video-resume.html" class="nav-link">Video Resume</a>
+                <a href="#skills" class="nav-link">Skills & Languages</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="assets/documents/Asri_Resume.pdf" download class="btn btn-secondary nav-btn" style="padding: 6px 16px; font-size: 0.85rem; margin-left: 10px;">
+                    <i class="fas fa-download"></i> Resume
+                </a>
+            </nav>
+            <div class="menu-toggle" id="mobileMenuBtn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+ 
+    <!-- Mobile Side Menu -->
+    <div class="mobile-nav" id="mobileNavMenu">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="animation-video-resume.html" class="mobile-link">Video Resume</a>
+        <a href="#skills" class="mobile-link">Skills & Languages</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="assets/documents/Asri_Resume.pdf" download class="mobile-link" style="color: var(--accent-primary);">
+            <i class="fas fa-download"></i> Download Resume
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <!-- Background Video -->
+        <video autoplay muted playsinline webkit-playsinline class="hero-bg-video" id="heroVideo">
+            <source src="assets/videos/Say_this_Hello_welcome_to_my.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Floating Replay Button (appears when video ends) -->
+        <button id="videoReplayBtn" class="video-replay-btn" aria-label="Replay Intro Video" style="display: none;">
+            <i class="fas fa-undo-alt"></i>
+            <span>Replay Intro</span>
+        </button>
+
+        <div class="container hero-container">
+            <div class="hero-content">
+                <!-- Mobile Only Hero Avatar -->
+                <div class="mobile-hero-avatar">
+                    <img src="assets/images/logo.jpg" alt="Asri Logo">
+                </div>
+                <div class="greeting-badge">
+                    <span>Hello</span><span class="dot">.</span>
+                </div>
+                <h2 class="hero-intro">I'm Sulaiman Lebbe Muhammad Asri</h2>
+                <h1 class="hero-title">
+                    <span class="typewriter-text" data-words='["Full-Stack Web Developer", "Mobile App Developer (Flutter)", "Desktop App Developer (Electron)", "HND IT Student", "AI & Cybersecurity Enthusiast", "Database & Backend Developer"]'>Full-Stack Web Developer</span>
+                </h1>
+                <p class="hero-desc">
+                    Pursuing a <strong>Higher National Diploma in Information Technology (HND IT)</strong> at SLIATE Anuradhapura. Motivated <strong>Full-Stack Web Developer</strong>, <strong>Mobile & Desktop App Developer</strong>, and <strong>AI enthusiast</strong> specializing in responsive web applications, database-driven systems, and practical software projects.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="assets/documents/Asri_Resume.pdf" download class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                    <a href="animation-video-resume.html" class="btn btn-secondary">
+                        <i class="fas fa-play-circle"></i> Watch Video Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech/Skills Ticker Banner -->
+    <section class="ticker-section">
+        <div class="ticker-wrapper">
+            <!-- First set of skills for seamless looping -->
+            <div class="ticker-content">
+                <span><i class="fab fa-html5 skill-icon icon-orange"></i> HTML5</span>
+                <span class="outline-text"><i class="fab fa-css3-alt skill-icon icon-blue"></i> CSS3</span>
+                <span><i class="fab fa-js skill-icon icon-orange"></i> JAVASCRIPT</span>
+                <span class="outline-text"><i class="fab fa-node-js skill-icon icon-white"></i> NODE.JS</span>
+                <span><i class="fas fa-database skill-icon icon-orange"></i> MYSQL</span>
+                <span class="outline-text"><i class="fab fa-flutter skill-icon icon-blue"></i> FLUTTER / DART</span>
+                <span><i class="fas fa-shield-alt skill-icon icon-orange"></i> CYBERSECURITY</span>
+                <span class="outline-text"><i class="fab fa-github skill-icon icon-blue"></i> GIT & GITHUB</span>
+            </div>
+            <!-- Second set of skills for seamless looping -->
+            <div class="ticker-content">
+                <span><i class="fab fa-html5 skill-icon icon-orange"></i> HTML5</span>
+                <span class="outline-text"><i class="fab fa-css3-alt skill-icon icon-blue"></i> CSS3</span>
+                <span><i class="fab fa-js skill-icon icon-orange"></i> JAVASCRIPT</span>
+                <span class="outline-text"><i class="fab fa-node-js skill-icon icon-white"></i> NODE.JS</span>
+                <span><i class="fas fa-database skill-icon icon-orange"></i> MYSQL</span>
+                <span class="outline-text"><i class="fab fa-flutter skill-icon icon-blue"></i> FLUTTER / DART</span>
+                <span><i class="fas fa-shield-alt skill-icon icon-orange"></i> CYBERSECURITY</span>
+                <span class="outline-text"><i class="fab fa-github skill-icon icon-blue"></i> GIT & GITHUB</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section scroll-section">
+        <!-- High-tech background grid and glowing theme orbs -->
+        <div class="about-bg-grid"></div>
+        <div class="about-glow-orb orb-orange"></div>
+        <div class="about-glow-orb orb-blue"></div>
+
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="about-grid">
+                <!-- Left: Interactive 3D Shape Showcase cards -->
+                <div class="about-cards shapes-3d-gallery">
+                    <!-- Card 1: Founder & Creative Director -->
+                    <div class="shape-card-3d" id="shape-card-founder" style="border-color: rgba(59, 130, 246, 0.25);">
+                        <div class="card-icon-2d" style="background-color: rgba(59, 130, 246, 0.08); color: #3b82f6;">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="shape-card-content">
+                            <h3>Founder & Creative Director</h3>
+                            <p>Built an <strong>AI-Powered Cybersecurity Awareness Chatbot</strong> using Python, Flask, and MySQL with quizzes and user authentication.</p>
+                            <a href="Asribot.html" style="color: #3b82f6; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; margin-top: 6px;">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Gamified Student Knowledge Level Identification System -->
+                    <div class="shape-card-3d" id="shape-card-sujok" style="border-color: rgba(16, 185, 129, 0.25);">
+                        <div class="card-icon-2d" style="background-color: rgba(16, 185, 129, 0.08); color: #10b981;">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="shape-card-content">
+                            <h3>Gamified Knowledge Assessment System</h3>
+                            <p>A web-based student knowledge assessment platform with gamified quizzes, JWT auth, and real-time dashboards.</p>
+                            <a href="GSKLIS.html" style="color: #10b981; font-size: 0.85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; margin-top: 6px;">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Full-Stack & Mobile Development -->
+                    <div class="shape-card-3d" id="shape-card-mechatronics" style="border-color: rgba(249, 115, 22, 0.25);">
+                        <div class="card-icon-2d" style="background-color: rgba(249, 115, 22, 0.08); color: #f97316;">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="shape-card-content">
+                            <h3>Mobile & Desktop App Development</h3>
+                            <p>Building cross-platform apps with Flutter/Dart and desktop applications using Electron and Node.js.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: AI & Cybersecurity -->
+                    <div class="shape-card-3d" id="shape-card-ai" style="border-color: rgba(255, 255, 255, 0.25);">
+                        <div class="card-icon-2d" style="background-color: rgba(255, 255, 255, 0.08); color: #ffffff;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="shape-card-content">
+                            <h3>Artificial Intelligence & Cybersecurity</h3>
+                            <p>Expanding knowledge in AI, Deep Learning, Computer Vision, and cybersecurity fundamentals through practical projects.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Bio and Timeline -->
+                <div class="about-text-content">
+                    <p class="about-bio">
+                        I am a highly motivated HND IT student with a strong foundation in software engineering, full-stack web development, mobile application development, and desktop application development. Proficient in HTML5, CSS3, JavaScript, Node.js, Electron, MySQL, Flutter, and Object-Oriented Programming (OOP), I enjoy designing responsive web applications and database-driven systems. I'm currently expanding my knowledge in Artificial Intelligence, Deep Learning, and Computer Vision through practical projects, and I approach every challenge with a quick-learning, problem-solving, and team-first mindset.
+                    </p>
+                    
+                    <div class="stats-counter-grid">
+                        <div class="stat-box">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label">Core Technologies</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Spoken Languages</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">HND</span>
+                            <span class="stat-label">Information Technology</span>
+                        </div>
+                    </div>
+
+                    <!-- Video Portfolio Button -->
+                    <div class="video-portfolio-btn-wrapper" style="margin: 25px 0; display: flex; align-items: center; gap: 15px;">
+                        <div class="attention-arrow" aria-hidden="true">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <a href="animation-video-resume.html" class="btn btn-primary glowing-pulse-btn colorful-theme-btn" style="width: fit-content; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">
+                            <i class="fas fa-play-circle" style="font-size: 1.1rem;"></i> Watch My Video Resume
+                        </a>
+                    </div>
+
+                    <!-- Education Timeline -->
+                    <div class="education-timeline-wrapper">
+                        <h3 class="timeline-title"><i class="fas fa-graduation-cap"></i> 3D Education Timeline</h3>
+                        <div class="timeline-3d-rail">
+                            <div class="timeline-card-3d">
+                                <div class="card-3d-inner">
+                                    <!-- FRONT -->
+                                    <div class="card-3d-front">
+                                        <div class="timeline-badge"></div>
+                                        <span class="timeline-date">2024 - Present</span>
+                                        <h4>Higher National Diploma in Information Technology (HND IT)</h4>
+                                        <p class="institution">SLIATE Anuradhapura</p>
+                                        <div class="flip-hint">Click to flip <i class="fas fa-rotate"></i></div>
+                                    </div>
+                                    <!-- BACK -->
+                                    <div class="card-3d-back">
+                                        <h4>SLIATE Anuradhapura</h4>
+                                        <ul class="milestones-list">
+                                            <li><i class="fas fa-database"></i> Database Management Systems</li>
+                                            <li><i class="fas fa-cogs"></i> Software Engineering & System Analysis</li>
+                                            <li><i class="fas fa-shield-halved"></i> Networking & Cybersecurity Fundamentals</li>
+                                        </ul>
+                                        <div class="flip-hint">Click to flip <i class="fas fa-rotate"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-card-3d">
+                                <div class="card-3d-inner">
+                                    <!-- FRONT -->
+                                    <div class="card-3d-front">
+                                        <div class="timeline-badge"></div>
+                                        <span class="timeline-date">2022 - 2023</span>
+                                        <h4>G.C.E. Advanced Level (Technology Stream)</h4>
+                                        <p class="institution">Dharus Salam Arabic College - Oddamavadi</p>
+                                        <div class="flip-hint">Click to flip <i class="fas fa-rotate"></i></div>
+                                    </div>
+                                    <!-- BACK -->
+                                    <div class="card-3d-back">
+                                        <h4>Dharus Salam Arabic College</h4>
+                                        <ul class="milestones-list">
+                                            <li><i class="fas fa-microchip"></i> Engineering Technology subjects</li>
+                                            <li><i class="fas fa-code"></i> Introductory programming foundation</li>
+                                            <li><i class="fas fa-language"></i> Strong communication skill-building</li>
+                                        </ul>
+                                        <div class="flip-hint">Click to flip <i class="fas fa-rotate"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-card-3d">
+                                <div class="card-3d-inner">
+                                    <!-- FRONT -->
+                                    <div class="card-3d-front">
+                                        <div class="timeline-badge"></div>
+                                        <span class="timeline-date">Completed in 2019</span>
+                                        <h4>G.C.E. Ordinary Level</h4>
+                                        <p class="institution">Dharus Salam Arabic College - Oddamavadi</p>
+                                        <div class="flip-hint">Click to flip <i class="fas fa-rotate"></i></div>
+                                    </div>
+                                    <!-- BACK -->
+                                    <div class="card-3d-back">
+                                        <h4>Dharus Salam Arabic College</h4>
+                                        <ul class="milestones-list">
+                                            <li><i class="fas fa-flask"></i> General Science & Math basics</li>
+                                            <li><i class="fas fa-language"></i> Outstanding language & communication skills</li>
+                                            <li><i class="fas fa-computer"></i> Computer literacy & hardware basics</li>
+                                        </ul>
+                                        <div class="flip-hint">Click to flip <i class="fas fa-rotate"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section scroll-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Languages</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Professional Profile Photo Card -->
+                <div class="skills-photo-card">
+                    <div class="photo-frame">
+                        <video class="skills-avatar" id="skillsVideo" muted playsinline>
+                            <source src="assets/videos/Animate_face_speaking_text_202606171220.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="photo-glow-effect"></div>
+                        <div class="photo-badges">
+                            <span class="photo-badge badge-orange">FULL-STACK DEV</span>
+                            <span class="photo-badge badge-blue">HND IT</span>
+                        </div>
+                        <button class="photo-replay-btn" id="photoReplayBtn" title="Replay Video" aria-label="Replay Video">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    <div class="photo-card-info">
+                        <h3>Sulaiman Lebbe Muhammad Asri</h3>
+                        <p>Building responsive web apps, mobile & desktop software, and exploring AI-driven solutions.</p>
+                    </div>
+                </div>
+
+                <!-- Coding & Tech Skills -->
+                <div class="skills-category">
+                    <h3 class="category-title"><i class="fas fa-code"></i> Technology & Coding</h3>
+                    <div class="tech-dashboard-container">
+                        <!-- Module 1: Web Fundamentals -->
+                        <div class="tech-diagnostic-module" data-theme="orange">
+                            <div class="tech-module-header">
+                                <div class="tech-indicator-circle">
+                                    <svg class="tech-ring" viewBox="0 0 36 36">
+                                        <circle class="ring-bg" cx="18" cy="18" r="16"></circle>
+                                        <circle class="ring-fill" cx="18" cy="18" r="16" stroke-dasharray="85, 100"></circle>
+                                    </svg>
+                                    <i class="fab fa-html5 tech-icon"></i>
+                                </div>
+                                <div class="tech-title-wrap">
+                                    <h4>HTML5, CSS3 & JavaScript</h4>
+                                    <span class="tech-status-badge">[ STATE: COMPILED ]</span>
+                                </div>
+                                <div class="tech-toggle-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="tech-log-console">
+                                <div class="console-title">> SYSTEM DIAGNOSTICS: web_fundamentals.sys</div>
+                                <ul class="console-logs">
+                                    <li><span class="prompt">></span> Responsive Layouts & Semantic Markup</li>
+                                    <li><span class="prompt">></span> Modern JavaScript (ES6) Development</li>
+                                    <li><span class="prompt">></span> Object-Oriented Programming (OOP)</li>
+                                    <li><span class="prompt">></span> Bootstrap-based Responsive UI</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Module 2: Node.js & Backend -->
+                        <div class="tech-diagnostic-module" data-theme="blue">
+                            <div class="tech-module-header">
+                                <div class="tech-indicator-circle">
+                                    <svg class="tech-ring" viewBox="0 0 36 36">
+                                        <circle class="ring-bg" cx="18" cy="18" r="16"></circle>
+                                        <circle class="ring-fill" cx="18" cy="18" r="16" stroke-dasharray="75, 100"></circle>
+                                    </svg>
+                                    <i class="fab fa-node-js tech-icon"></i>
+                                </div>
+                                <div class="tech-title-wrap">
+                                    <h4>Node.js & Express.js</h4>
+                                    <span class="tech-status-badge">[ SERVER: ACTIVE ]</span>
+                                </div>
+                                <div class="tech-toggle-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="tech-log-console">
+                                <div class="console-title">> SYSTEM DIAGNOSTICS: nodejs_backend.sys</div>
+                                <ul class="console-logs">
+                                    <li><span class="prompt">></span> REST API Design & Development</li>
+                                    <li><span class="prompt">></span> JWT Authentication & Secure Login</li>
+                                    <li><span class="prompt">></span> Server-side Routing & Middleware</li>
+                                    <li><span class="prompt">></span> Real-time Dashboard Data Handling</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Module 3: MySQL & Databases -->
+                        <div class="tech-diagnostic-module" data-theme="white">
+                            <div class="tech-module-header">
+                                <div class="tech-indicator-circle">
+                                    <svg class="tech-ring" viewBox="0 0 36 36">
+                                        <circle class="ring-bg" cx="18" cy="18" r="16"></circle>
+                                        <circle class="ring-fill" cx="18" cy="18" r="16" stroke-dasharray="80, 100"></circle>
+                                    </svg>
+                                    <i class="fas fa-database tech-icon"></i>
+                                </div>
+                                <div class="tech-title-wrap">
+                                    <h4>MySQL & Database Management</h4>
+                                    <span class="tech-status-badge">[ DB: SYNCED ]</span>
+                                </div>
+                                <div class="tech-toggle-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="tech-log-console">
+                                <div class="console-title">> SYSTEM DIAGNOSTICS: mysql_db.sys</div>
+                                <ul class="console-logs">
+                                    <li><span class="prompt">></span> Relational Schema Design</li>
+                                    <li><span class="prompt">></span> MySQL Workbench & XAMPP Environments</li>
+                                    <li><span class="prompt">></span> Query Optimization & Data Integrity</li>
+                                    <li><span class="prompt">></span> Database-driven Application Integration</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Module 4: Flutter & Mobile Development -->
+                        <div class="tech-diagnostic-module" data-theme="green">
+                            <div class="tech-module-header">
+                                <div class="tech-indicator-circle">
+                                    <svg class="tech-ring" viewBox="0 0 36 36">
+                                        <circle class="ring-bg" cx="18" cy="18" r="16"></circle>
+                                        <circle class="ring-fill" cx="18" cy="18" r="16" stroke-dasharray="65, 100"></circle>
+                                    </svg>
+                                    <i class="fab fa-flutter tech-icon"></i>
+                                </div>
+                                <div class="tech-title-wrap">
+                                    <h4>Flutter & Dart (Mobile Apps)</h4>
+                                    <span class="tech-status-badge">[ BUILD: RUNNING ]</span>
+                                </div>
+                                <div class="tech-toggle-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="tech-log-console">
+                                <div class="console-title">> SYSTEM DIAGNOSTICS: flutter_mobile.sys</div>
+                                <ul class="console-logs">
+                                    <li><span class="prompt">></span> Cross-platform Mobile UI (Dart)</li>
+                                    <li><span class="prompt">></span> Widget-based Application Architecture</li>
+                                    <li><span class="prompt">></span> XML Layouts & State Management</li>
+                                    <li><span class="prompt">></span> Mobile-first App Prototyping</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Module 5: Electron (Desktop Apps) -->
+                        <div class="tech-diagnostic-module" data-theme="purple">
+                            <div class="tech-module-header">
+                                <div class="tech-indicator-circle">
+                                    <svg class="tech-ring" viewBox="0 0 36 36">
+                                        <circle class="ring-bg" cx="18" cy="18" r="16"></circle>
+                                        <circle class="ring-fill" cx="18" cy="18" r="16" stroke-dasharray="70, 100"></circle>
+                                    </svg>
+                                    <i class="fas fa-desktop tech-icon"></i>
+                                </div>
+                                <div class="tech-title-wrap">
+                                    <h4>Electron (Desktop Applications)</h4>
+                                    <span class="tech-status-badge">[ APP: PACKAGED ]</span>
+                                </div>
+                                <div class="tech-toggle-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="tech-log-console">
+                                <div class="console-title">> SYSTEM DIAGNOSTICS: electron_desktop.sys</div>
+                                <ul class="console-logs">
+                                    <li><span class="prompt">></span> Cross-platform Desktop App Builds</li>
+                                    <li><span class="prompt">></span> Node.js-powered Desktop Logic</li>
+                                    <li><span class="prompt">></span> Native-feel UI with Web Technologies</li>
+                                    <li><span class="prompt">></span> Git & GitHub Version Control</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Module 6: Cybersecurity -->
+                        <div class="tech-diagnostic-module" data-theme="red">
+                            <div class="tech-module-header">
+                                <div class="tech-indicator-circle">
+                                    <svg class="tech-ring" viewBox="0 0 36 36">
+                                        <circle class="ring-bg" cx="18" cy="18" r="16"></circle>
+                                        <circle class="ring-fill" cx="18" cy="18" r="16" stroke-dasharray="65, 100"></circle>
+                                    </svg>
+                                    <i class="fas fa-shield-alt tech-icon"></i>
+                                </div>
+                                <div class="tech-title-wrap">
+                                    <h4>Cybersecurity Fundamentals</h4>
+                                    <span class="tech-status-badge">[ PARAPET: SECURED ]</span>
+                                </div>
+                                <div class="tech-toggle-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="tech-log-console">
+                                <div class="console-title">> SYSTEM DIAGNOSTICS: cyber_sec.sys</div>
+                                <ul class="console-logs">
+                                    <li><span class="prompt">></span> User Authentication & Session Security</li>
+                                    <li><span class="prompt">></span> Cybersecurity Awareness Content Design</li>
+                                    <li><span class="prompt">></span> Secure Database Connectivity</li>
+                                    <li><span class="prompt">></span> AI-powered Security Awareness Tools</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Module 7: Communication -->
+                        <div class="tech-diagnostic-module" data-theme="yellow">
+                            <div class="tech-module-header">
+                                <div class="tech-indicator-circle">
+                                    <svg class="tech-ring" viewBox="0 0 36 36">
+                                        <circle class="ring-bg" cx="18" cy="18" r="16"></circle>
+                                        <circle class="ring-fill" cx="18" cy="18" r="16" stroke-dasharray="90, 100"></circle>
+                                    </svg>
+                                    <i class="fas fa-comments tech-icon"></i>
+                                </div>
+                                <div class="tech-title-wrap">
+                                    <h4>Communication & Teamwork</h4>
+                                    <span class="tech-status-badge">[ LINK STATE: OPTIMAL ]</span>
+                                </div>
+                                <div class="tech-toggle-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="tech-log-console">
+                                <div class="console-title">> SYSTEM DIAGNOSTICS: core_comm.sys</div>
+                                <ul class="console-logs">
+                                    <li><span class="prompt">></span> Problem Solving & Time Management</li>
+                                    <li><span class="prompt">></span> Teamwork & Cross-functional Collaboration</li>
+                                    <li><span class="prompt">></span> Project Planning & Documentation</li>
+                                    <li><span class="prompt">></span> Leadership & Group Facilitation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages & Tools -->
+                <div class="skills-category">
+                    <h3 class="category-title"><i class="fas fa-language"></i> Languages & Interpersonal</h3>
+                    <div class="languages-grid">
+                        <!-- Card 1: English -->
+                        <div class="lang-card" data-lang-theme="blue">
+                            <div class="lang-header">
+                                <div class="lang-meta">
+                                    <span class="lang-code-badge">EN</span>
+                                    <h4>English</h4>
+                                </div>
+                                <span class="lang-level-badge">FLUENT</span>
+                            </div>
+                            <div class="lang-progress-container">
+                                <div class="lang-progress-bar">
+                                    <div class="lang-progress-fill"></div>
+                                </div>
+                                <span class="lang-progress-val">95%</span>
+                            </div>
+                            <p class="lang-desc">Technical documentation, professional correspondence, and confident presentation skills.</p>
+                        </div>
+
+                        <!-- Card 2: Tamil -->
+                        <div class="lang-card" data-lang-theme="orange">
+                            <div class="lang-header">
+                                <div class="lang-meta">
+                                    <span class="lang-code-badge">TA</span>
+                                    <h4>Tamil</h4>
+                                </div>
+                                <span class="lang-level-badge">NATIVE</span>
+                            </div>
+                            <div class="lang-progress-container">
+                                <div class="lang-progress-bar">
+                                    <div class="lang-progress-fill"></div>
+                                </div>
+                                <span class="lang-progress-val">100%</span>
+                            </div>
+                            <p class="lang-desc">Native communication, regional cultural alignment, and local technical presentation capabilities.</p>
+                        </div>
+
+                        <!-- Card 3: Sinhala -->
+                        <div class="lang-card" data-lang-theme="green">
+                            <div class="lang-header">
+                                <div class="lang-meta">
+                                    <span class="lang-code-badge">SI</span>
+                                    <h4>Sinhala</h4>
+                                </div>
+                                <span class="lang-level-badge">FLUENT</span>
+                            </div>
+                            <div class="lang-progress-container">
+                                <div class="lang-progress-bar">
+                                    <div class="lang-progress-fill"></div>
+                                </div>
+                                <span class="lang-progress-val">90%</span>
+                            </div>
+                            <p class="lang-desc">Fluent conversation, local community networking, and effective team coordination.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Courses Section -->
+    <section id="certifications" class="scroll-section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications & Courses</h2>
+                <div class="title-underline"></div>
+            </div>
+            
+            <div class="certifications-bento-grid">
+                <!-- Card 1: Python for Beginners (Wide top tile) -->
+                <div class="bento-card bento-card-wide-top" data-bento-theme="orange">
+                    <div class="bento-card-inner">
+                        <div class="bento-card-header">
+                            <div class="bento-card-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <span class="bento-status-tag">COMPLETED</span>
+                        </div>
+                        <div class="bento-card-content">
+                            <h3>PYTHON FOR BEGINNERS</h3>
+                            <p>Foundational Python programming certification from University of Moratuwa.</p>
+                            <div class="bento-tags">
+                                <span><i class="fab fa-python"></i> Python</span>
+                                <span><i class="fas fa-code"></i> Programming Basics</span>
+                                <span><i class="fas fa-university"></i> Univ. of Moratuwa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2: Python via VS Code - Microsoft LSA (Tall tile) -->
+                <div class="bento-card bento-card-tall" data-bento-theme="blue">
+                    <div class="bento-card-inner">
+                        <div class="bento-card-header">
+                            <div class="bento-card-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <span class="bento-status-tag">COMPLETED</span>
+                        </div>
+                        <div class="bento-card-content">
+                            <h3>PYTHON PROGRAMMING USING VS CODE</h3>
+                            <p>Certified by Microsoft Learn Student Ambassador program, covering practical Python development in Visual Studio Code.</p>
+                            <div class="bento-tags vertical-tags">
+                                <span><i class="fab fa-microsoft"></i> Microsoft Learn</span>
+                                <span><i class="fas fa-code"></i> VS Code</span>
+                                <span><i class="fab fa-python"></i> Python</span>
+                                <span><i class="fas fa-user-graduate"></i> Student Ambassador</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Spoken English (Wide bottom tile) -->
+                <div class="bento-card bento-card-wide-bottom" data-bento-theme="green">
+                    <div class="bento-card-inner">
+                        <div class="bento-card-header">
+                            <div class="bento-card-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <span class="bento-status-tag">COMPLETED</span>
+                        </div>
+                        <div class="bento-card-content">
+                            <h3>SPOKEN ENGLISH</h3>
+                            <p>Certificate in Spoken English from Vidura Faculty of English, strengthening professional communication skills.</p>
+                            <div class="bento-tags">
+                                <span><i class="fas fa-language"></i> English</span>
+                                <span><i class="fas fa-microphone"></i> Communication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Psychology & Moulavi Certificate (Full width bottom tile) -->
+                <div class="bento-card bento-card-full-width" data-bento-theme="purple">
+                    <div class="bento-card-inner">
+                        <div class="bento-card-header">
+                            <div class="bento-card-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <span class="bento-status-tag">COMPLETED</span>
+                        </div>
+                        <div class="bento-card-content">
+                            <h3>PSYCHOLOGY & MOULAVI CERTIFICATION</h3>
+                            <p>Certificate in Psychology from NKB Studies and Media College, and Certificate of Moulavi from Dharus Salam Arabic College.</p>
+                            <div class="bento-tags">
+                                <span><i class="fas fa-book"></i> Psychology</span>
+                                <span><i class="fas fa-mosque"></i> Moulavi Certificate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section scroll-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Left: Contact Details and Social Buttons -->
+                <div class="contact-info-panel reveal">
+                    <h3>Contact Information</h3>
+                    <p class="contact-subtext">Have an internship opportunity, freelance project, or collaboration idea to discuss? Let's connect!</p>
+                    
+                    <div class="contact-details">
+                        <!-- Email -->
+                        <a href="mailto:mohammadasri553@gmail.com" class="detail-item" data-contact-theme="purple">
+                            <div class="detail-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="detail-info">
+                                <span>Email Me</span>
+                                <strong>mohammadasri553@gmail.com</strong>
+                            </div>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/94768967587" target="_blank" rel="noopener" class="detail-item" data-contact-theme="green">
+                            <div class="detail-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="detail-info">
+                                <span>WhatsApp / Call</span>
+                                <strong>+94 76 896 7587</strong>
+                            </div>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/muhammad-asri-37a192329" target="_blank" rel="noopener" class="detail-item" data-contact-theme="blue">
+                            <div class="detail-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
+                            <div class="detail-info">
+                                <span>LinkedIn Connection</span>
+                                <strong>muhammad-asri-37a192329</strong>
+                            </div>
+                        </a>
+                        <!-- GitHub -->
+                        <a href="https://github.com/SLM-Asri" target="_blank" rel="noopener" class="detail-item" data-contact-theme="white">
+                            <div class="detail-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="detail-info">
+                                <span>GitHub Profile</span>
+                                <strong>SLM-Asri</strong>
+                            </div>
+                        </a>
+                        <!-- Location -->
+                        <a href="#" class="detail-item" data-contact-theme="yellow" onclick="return false;">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail-info">
+                                <span>Location</span>
+                                <strong>Anuradhapura, Sri Lanka</strong>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="social-circles">
+                        <a href="mailto:mohammadasri553@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://wa.me/94768967587" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-asri-37a192329" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/SLM-Asri" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="contact-form-panel reveal">
+                    <form id="contactForm" action="https://formsubmit.co/mohammadasri553@gmail.com" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Project description / Inquiry">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project, query, or invitation..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-btn colorful-contact-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div id="formStatus" class="form-status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Sulaiman Lebbe Muhammad Asri. All Rights Reserved.</p>
+            <p>Designed with <i class="fas fa-heart text-coral"></i> and built on Full-Stack principles.</p>
+        </div>
+    </footer>
+
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
