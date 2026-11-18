@@ -13,5 +13,5 @@ export default defineConfig({
             }
         }
     },
-    base: process.env.VITE_BASE_PATH || "/my-portfolio-pro",
+    base: process.env.VITE_BASE_PATH || "/my-portfolio-pro/frontend",
 });
