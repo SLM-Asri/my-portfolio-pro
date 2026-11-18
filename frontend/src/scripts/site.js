@@ -222,6 +222,25 @@ export function initializeSiteInteractions() {
             });
         }
         
+        // Scroll Reveal Animations Trigger
+        const revealElements = document.querySelectorAll('.reveal');
+        const triggerPoint = window.innerHeight * 0.85;
+
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < triggerPoint) {
+                element.classList.add('active');
+                
+                // If it is a skills category, animate progress bars
+                if (element.classList.contains('skills-category')) {
+                    const fills = element.querySelectorAll('.progress-fill');
+                    fills.forEach(fill => {
+                        const targetWidth = fill.parentNode.previousElementSibling.lastElementChild.textContent;
+                        fill.style.width = targetWidth;
+                    });
+                }
+            }
+        });
     };
 
     window.addEventListener('scroll', handleScroll, { signal: eventController.signal });
@@ -284,6 +303,21 @@ export function initializeSiteInteractions() {
         if (startTypewriter) startTypewriter();
         handleScroll();
     }, { signal: eventController.signal });
+
+    /* ==========================================================================
+       SKILL PROGRESS & REVEAL CLASSES INITIALIZATION
+       ========================================================================== */
+    // Add scroll reveal classes to sections for smooth load in
+    document.querySelectorAll('.skills-category').forEach(el => el.classList.add('reveal'));
+    document.querySelectorAll('.about-card-item').forEach(el => el.classList.add('reveal'));
+    document.querySelectorAll('.lang-card').forEach(el => el.classList.add('reveal'));
+    document.querySelectorAll('.timeline-item').forEach(el => el.classList.add('reveal'));
+    
+    // Staggered bento cards reveal transition delays
+    document.querySelectorAll('.bento-card').forEach((el, index) => {
+        el.classList.add('reveal');
+        el.style.setProperty('--delay', `${index * 150}ms`);
+    });
 
     /* ==========================================================================
        CONTACT FORM SUBMIT (SIMULATED PROMPT)

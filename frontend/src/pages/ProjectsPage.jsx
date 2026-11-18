@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SiteLayout from '../components/SiteLayout.jsx';
 import api from '../services/api.js';
 import { resolveProjectImage } from '../utils/projectImage.js';
+import { observeScrollReveals } from '../utils/scrollReveal.js';
 import '../styles/projects.css';
 
 function ProjectCard({ project }) {
@@ -46,6 +47,7 @@ function ProjectCard({ project }) {
 }
 
 export default function ProjectsPage() {
+  const projectsPageRef = useRef(null);
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
@@ -68,13 +70,18 @@ export default function ProjectsPage() {
     };
   }, []);
 
+  useEffect(
+    () => observeScrollReveals(projectsPageRef.current, '.projects-page-heading, .project-showcase-card'),
+    [isLoading, projects]
+  );
+
   return (
     <SiteLayout
       page="projects"
       title="Projects | S.L.M. Asri"
       description="Explore completed full-stack, education, and cybersecurity projects by Sulaiman Lebbe Muhammad Asri."
     >
-      <main className="projects-page">
+      <main className="projects-page" ref={projectsPageRef}>
         <div className="container">
           <header className="projects-page-heading">
             <span className="service-badge">Selected Work</span>

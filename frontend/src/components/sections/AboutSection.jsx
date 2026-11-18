@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api.js';
+import { observeScrollReveals } from '../../utils/scrollReveal.js';
 
 const defaultAboutText = 'I am a highly motivated HND IT student with a strong foundation in software engineering, full-stack web development, mobile application development, and desktop application development. Proficient in HTML5, CSS3, JavaScript, Node.js, Electron, MySQL, Flutter, and Object-Oriented Programming (OOP), I enjoy designing responsive web applications and database-driven systems. I\'m currently expanding my knowledge in Artificial Intelligence, Deep Learning, and Computer Vision through practical projects, and I approach every challenge with a quick-learning, problem-solving, and team-first mindset.';
 
@@ -35,6 +36,7 @@ function educationDate(item) {
 }
 
 export default function AboutSection() {
+    const aboutRef = useRef(null);
     const [aboutText, setAboutText] = useState(defaultAboutText);
     const [aboutDegreeTitle, setAboutDegreeTitle] = useState('HND Information Technology');
     const [education, setEducation] = useState(fallbackEducation);
@@ -66,6 +68,14 @@ export default function AboutSection() {
     const [degreeHighlight, ...degreeSubtitleParts] = aboutDegreeTitle.trim().split(/\s+/);
     const degreeSubtitle = degreeSubtitleParts.join(' ');
 
+    useEffect(
+        () => observeScrollReveals(
+            aboutRef.current,
+            '.shape-card-3d, .about-bio, .stats-counter-grid, .education-timeline-wrapper, .timeline-card-3d'
+        ),
+        [education]
+    );
+
     const toggleEducationCard = (cardId) => {
         setFlippedCards((current) => {
             const next = new Set(current);
@@ -76,7 +86,7 @@ export default function AboutSection() {
     };
 
     return (
-        <section id="about" className="about-section scroll-section">
+        <section id="about" className="about-section scroll-section" ref={aboutRef}>
   {/* High-tech background grid and glowing theme orbs */}
   <div className="about-bg-grid" />
   <div className="about-glow-orb orb-orange" />

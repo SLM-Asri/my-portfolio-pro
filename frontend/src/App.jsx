@@ -1,6 +1,5 @@
-import { lazy, Suspense, useRef } from 'react';
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { usePageMotion } from './hooks/usePageMotion.js';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage.jsx'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage.jsx'));
@@ -11,15 +10,11 @@ const VideoResumePage = lazy(() => import('./pages/VideoResumePage.jsx'));
 const AdminLoginPage = lazy(() => import('./admin/pages/AdminLogin.jsx'));
 const AdminDashboard = lazy(() => import('./admin/pages/AdminDashboard.jsx'));
 
-function AppRoutes() {
-    const location = useLocation();
-    const motionRootRef = useRef(null);
-    usePageMotion(motionRootRef, location.pathname);
-
+export default function App() {
     return (
-        <div className="route-motion-frame" key={location.pathname} ref={motionRootRef}>
+        <BrowserRouter>
             <Suspense fallback={null}>
-                <Routes location={location}>
+                <Routes>
                     <Route path="/" element={<PortfolioPage />} />
                     <Route path="/projects" element={<ProjectsPage />} />
                     <Route path="/projects/cybersecurity-chatbot" element={<ChatbotProjectPage />} />
@@ -31,14 +26,6 @@ function AppRoutes() {
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </Suspense>
-        </div>
-    );
-}
-
-export default function App() {
-    return (
-        <BrowserRouter>
-            <AppRoutes />
         </BrowserRouter>
     );
 }

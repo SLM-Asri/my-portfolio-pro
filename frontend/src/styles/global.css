@@ -2373,106 +2373,25 @@ ul {
     40% { transform: scale(1.0); }
 }
 
-/* Shared route and scroll-reveal motion */
-.route-motion-frame {
-    animation: route-fade-in 420ms ease both;
-}
-
+/* Scroll reveal helper class */
 .reveal {
     opacity: 0;
+    transform: translateY(40px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    transition-delay: var(--delay, 0ms);
 }
 
 .reveal.active {
-    animation: reveal-fade-up 680ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms) both;
-    will-change: opacity, transform;
-}
-
-.reveal--fade.active {
-    animation-name: reveal-fade;
-}
-
-.reveal--slide-left.active {
-    animation-name: reveal-slide-left;
-}
-
-.reveal--slide-right.active {
-    animation-name: reveal-slide-right;
-}
-
-.reveal--scale.active {
-    animation-name: reveal-scale;
-}
-
-@keyframes route-fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes reveal-fade-up {
-    from { opacity: 0; transform: translate3d(0, 24px, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-@keyframes reveal-fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes reveal-slide-left {
-    from { opacity: 0; transform: translate3d(20px, 0, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-@keyframes reveal-slide-right {
-    from { opacity: 0; transform: translate3d(-20px, 0, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-
-@keyframes reveal-scale {
-    from { opacity: 0; transform: translate3d(0, 12px, 0) scale(0.97); }
-    to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
-}
-
-@media (hover: hover) and (pointer: fine) {
-    button:not(:disabled):hover,
-    a[href]:hover,
-    [role="button"]:hover {
-        filter: brightness(1.04);
-    }
-}
-
-button:not(:disabled):active,
-[role="button"]:active,
-a[href]:active {
-    filter: brightness(0.96);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-delay: 0ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-delay: 0ms !important;
-        transition-duration: 0.01ms !important;
-    }
-
-    .route-motion-frame {
-        animation: none;
-    }
-
     .reveal,
     .reveal.active {
         opacity: 1;
         transform: none;
-        animation: none;
-        will-change: auto;
+        transition: none;
     }
 }
 

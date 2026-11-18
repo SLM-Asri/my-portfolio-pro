@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api.js';
+import { observeScrollReveals } from '../../utils/scrollReveal.js';
 import '../styles/admin.css';
 
 const initialPersonalInfo = {
@@ -129,6 +130,7 @@ const educationDefaults = {
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
+  const adminContentRef = useRef(null);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -211,6 +213,14 @@ export default function AdminDashboard() {
       window.removeEventListener('keydown', closeOnEscape);
     };
   }, [isSidebarOpen]);
+
+  useEffect(() => {
+    if (!isAuthorized) return undefined;
+    return observeScrollReveals(
+      adminContentRef.current,
+      '.admin-page-heading, .admin-notice, .admin-grid > .admin-card, .admin-content > .admin-card'
+    );
+  }, [activeTab, isAuthorized]);
 
   if (!isAuthorized) {
     return null;
@@ -532,7 +542,7 @@ export default function AdminDashboard() {
             </nav>
           </aside>
 
-          <main className="admin-content">
+          <main className="admin-content" ref={adminContentRef}>
             <div className="admin-page-heading">
               <div>
                 <div className="admin-breadcrumb">ADMINISTRATION <i className="fas fa-chevron-right" aria-hidden="true" /> {activeNavItem.label.toUpperCase()}</div>
