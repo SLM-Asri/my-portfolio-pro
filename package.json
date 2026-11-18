@@ -2,12 +2,25 @@
   "name": "asri-portfolio",
   "version": "1.0.0",
   "description": "Professional Portfolio for Sulaiman Lebbe Muhammad Asri - HND IT / Full-Stack Development",
-  "main": "index.html",
+  "type": "module",
   "scripts": {
-    "dev": "npx -y http-server -p 3000 -o"
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "dev:client": "vite --host 0.0.0.0 --port 3000",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:client\"",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^1.7.7",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5",
+    "three": "^0.187.0"
+  },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^9.1.2",
+    "vite": "^8.3.8"
   }
 }

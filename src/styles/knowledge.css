@@ -1,0 +1,127 @@
+.company-hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, #020302 0%, #080a08 100%);
+        }
+        .company-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .company-logo-wrapper {
+            width: 380px;
+            max-width: 100%;
+            border-radius: var(--radius-md);
+            padding: 10px;
+            border: 2px solid rgba(16, 185, 129, 0.15);
+            background-color: #fff;
+            box-shadow: var(--shadow-md), 0 0 30px rgba(16, 185, 129, 0.1);
+            transition: all var(--transition-normal);
+        }
+        .company-logo-wrapper:hover {
+            transform: translateY(-5px);
+            border-color: #10b981;
+            box-shadow: var(--shadow-md), 0 0 40px rgba(16, 185, 129, 0.2);
+        }
+        .company-logo-img {
+            width: 100%;
+            border-radius: var(--radius-sm);
+        }
+        .service-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #10b981; /* Green branding from logo */
+            background-color: rgba(16, 185, 129, 0.08);
+            padding: 3px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .founder-section {
+            padding: 80px 0;
+            background-color: var(--bg-primary);
+        }
+        .founder-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .founder-image-wrapper {
+            position: relative;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+        .founder-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-md);
+            z-index: 1;
+            pointer-events: none;
+            transition: all var(--transition-normal);
+        }
+        .founder-image-wrapper:hover::before {
+            top: -8px;
+            left: -8px;
+            border-color: #10b981;
+        }
+        .founder-img-card {
+            position: relative;
+            z-index: 2;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            background-color: var(--bg-secondary);
+            transition: all var(--transition-normal);
+        }
+        .founder-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(10%) contrast(105%);
+            transition: all var(--transition-normal);
+        }
+        .founder-image-wrapper:hover .founder-img {
+            filter: grayscale(0%) contrast(100%);
+            transform: scale(1.02);
+        }
+        .founder-title-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #10b981;
+            background-color: rgba(16, 185, 129, 0.08);
+            padding: 3px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 768px) {
+            .founder-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .founder-image-wrapper {
+                max-width: 280px;
+            }
+            .company-logo-container {
+                order: -1;
+            }
+            .company-hero h1 {
+                font-size: 2.2rem !important;
+            }
+            .company-logo-wrapper {
+                max-width: 240px;
+            }
+        }

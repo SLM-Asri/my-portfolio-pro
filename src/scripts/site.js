@@ -10,7 +10,13 @@
 /* ==========================================================================
    INITIALIZATION & GLOBALS
    ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
+export function initializeSiteInteractions() {
+    const eventController = new AbortController();
+    let mobileNavBackdrop = null;
+    let createdMobileNavBackdrop = false;
+    let scrollCheckTimeout;
+    let typewriterTimeout;
+
     // Navigation elements
     const header = document.querySelector('.header');
     const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -22,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Typewriter element
     const typewriterElement = document.querySelector('.typewriter-text');
+    let startTypewriter = null;
     
     // Contact Form
     const contactForm = document.getElementById('contactForm');
@@ -35,18 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     if (mobileMenuBtn && mobileNavMenu) {
         // Create and inject mobile nav backdrop dynamically
-        let backdrop = document.getElementById('mobileNavBackdrop');
-        if (!backdrop) {
-            backdrop = document.createElement('div');
-            backdrop.id = 'mobileNavBackdrop';
-            backdrop.className = 'mobile-nav-backdrop';
-            document.body.appendChild(backdrop);
+        mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+        if (!mobileNavBackdrop) {
+            mobileNavBackdrop = document.createElement('div');
+            mobileNavBackdrop.id = 'mobileNavBackdrop';
+            mobileNavBackdrop.className = 'mobile-nav-backdrop';
+            document.body.appendChild(mobileNavBackdrop);
+            createdMobileNavBackdrop = true;
         }
 
         const openMobileMenu = () => {
             mobileMenuBtn.classList.add('active');
             mobileNavMenu.classList.add('open');
-            backdrop.classList.add('open');
+            mobileNavBackdrop.classList.add('open');
             document.body.style.overflow = 'hidden'; // Lock background scrolling
             
             const bars = mobileMenuBtn.querySelectorAll('.bar');
@@ -60,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeMobileMenu = () => {
             mobileMenuBtn.classList.remove('active');
             mobileNavMenu.classList.remove('open');
-            backdrop.classList.remove('open');
+            mobileNavBackdrop.classList.remove('open');
             document.body.style.overflow = ''; // Unlock background scrolling
             
             const bars = mobileMenuBtn.querySelectorAll('.bar');
@@ -81,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Close mobile menu on backdrop click
-        backdrop.addEventListener('click', () => {
+        mobileNavBackdrop.addEventListener('click', () => {
             closeMobileMenu();
         });
 
@@ -101,13 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
             touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
+        }, { passive: true, signal: eventController.signal });
 
         document.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             touchEndY = e.changedTouches[0].screenY;
             handleSwipeGesture();
-        }, { passive: true });
+        }, { passive: true, signal: eventController.signal });
 
         const handleSwipeGesture = () => {
             const swipeDistanceX = touchEndX - touchStartX;
@@ -133,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
        STICKY HEADER & BACK-TO-TOP BUTTON
        ========================================================================== */
     let skillsSectionAccessed = false;
+    let portfolioEntered = false;
 
     const handleScroll = () => {
         const scrollPos = window.scrollY;
@@ -145,10 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Scroll To Top Button
-        if (scrollPos > 300) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
+        if (scrollToTopBtn) {
+            if (scrollPos > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
         }
 
         // Active Section Scroll Spy
@@ -163,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Trigger video play/stop on section access
         if (currentSectionId === 'skills') {
-            if (!skillsSectionAccessed) {
+            if (!skillsSectionAccessed && portfolioEntered) {
                 skillsSectionAccessed = true;
                 
                 // Stop Home page intro video immediately
@@ -211,30 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
-        // Scroll Reveal Animations Trigger
-        const revealElements = document.querySelectorAll('.reveal');
-        const triggerPoint = window.innerHeight * 0.85;
-
-        revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            if (elementTop < triggerPoint) {
-                element.classList.add('active');
-                
-                // If it is a skills category, animate progress bars
-                if (element.classList.contains('skills-category')) {
-                    const fills = element.querySelectorAll('.progress-fill');
-                    fills.forEach(fill => {
-                        const targetWidth = fill.parentNode.previousElementSibling.lastElementChild.textContent;
-                        fill.style.width = targetWidth;
-                    });
-                }
-            }
-        });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { signal: eventController.signal });
     // Trigger scroll check on load to reveal elements currently visible
-    setTimeout(handleScroll, 100);
+    scrollCheckTimeout = setTimeout(handleScroll, 100);
 
     // Scroll to Top action
     if (scrollToTopBtn) {
@@ -280,27 +272,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 typeSpeed = 400; // Small delay before typing next word
             }
             
-            setTimeout(type, typeSpeed);
+            typewriterTimeout = setTimeout(type, typeSpeed);
         };
-        
-        // Start typewriter
-        setTimeout(type, 500);
+        startTypewriter = () => {
+            typewriterTimeout = setTimeout(type, 500);
+        };
     }
 
-    /* ==========================================================================
-       SKILL PROGRESS & REVEAL CLASSES INITIALIZATION
-       ========================================================================== */
-    // Add scroll reveal classes to sections for smooth load in
-    document.querySelectorAll('.skills-category').forEach(el => el.classList.add('reveal'));
-    document.querySelectorAll('.about-card-item').forEach(el => el.classList.add('reveal'));
-    document.querySelectorAll('.lang-card').forEach(el => el.classList.add('reveal'));
-    document.querySelectorAll('.timeline-item').forEach(el => el.classList.add('reveal'));
-    
-    // Staggered bento cards reveal transition delays
-    document.querySelectorAll('.bento-card').forEach((el, index) => {
-        el.classList.add('reveal');
-        el.style.setProperty('--delay', `${index * 150}ms`);
-    });
+    window.addEventListener('portfolio:enter', () => {
+        portfolioEntered = true;
+        if (startTypewriter) startTypewriter();
+        handleScroll();
+    }, { signal: eventController.signal });
 
     /* ==========================================================================
        CONTACT FORM SUBMIT (SIMULATED PROMPT)
@@ -431,39 +414,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Interactive 3D Education Timeline Card Flip
-    const timelineCards = document.querySelectorAll('.timeline-card-3d');
-    timelineCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const inner = card.querySelector('.card-3d-inner');
-            if (inner) {
-                inner.classList.toggle('flipped');
-            }
-        });
-    });
-
-});
+    return () => {
+        eventController.abort();
+        clearTimeout(scrollCheckTimeout);
+        clearTimeout(typewriterTimeout);
+        document.body.style.overflow = '';
+        if (createdMobileNavBackdrop && mobileNavBackdrop) mobileNavBackdrop.remove();
+    };
+}
 
 // ==========================================================================
 // PRELOADER LOADING SCREEN HANDLER & ENTER BUTTON AUDIO CONTROLLER
 // ==========================================================================
-document.addEventListener('DOMContentLoaded', () => {
-    const preloader = document.getElementById('preloader');
-    const preloaderEnterBtn = document.getElementById('preloaderEnterBtn');
+export function initializePageInteractions() {
+    const eventController = new AbortController();
+    const timeouts = [];
+    const schedule = (callback, delay) => {
+        const timeout = setTimeout(callback, delay);
+        timeouts.push(timeout);
+        return timeout;
+    };
+
     const heroVideo = document.getElementById('heroVideo');
     const videoReplayBtn = document.getElementById('videoReplayBtn');
-    
+
     // Slow down the video sound & verify pitch preservation for clarity
     if (heroVideo) {
         heroVideo.muted = true; // Start muted to satisfy browser checks
-        
+        heroVideo.pause();
+
         const configureVideoPlayback = () => {
             heroVideo.playbackRate = 0.95; // Slightly faster for natural feel
             heroVideo.preservesPitch = true;
             heroVideo.webkitPreservesPitch = true;
             heroVideo.mozPreservesPitch = true;
             heroVideo.loop = false; // Ensure it does not loop automatically
-            
+
             // Detect if video is portrait (width < height)
             if (heroVideo.videoWidth < heroVideo.videoHeight) {
                 heroVideo.classList.add('video-portrait');
@@ -477,77 +463,37 @@ document.addEventListener('DOMContentLoaded', () => {
             heroVideo.addEventListener('loadedmetadata', configureVideoPlayback);
         }
 
-        // Force browser to play muted in the background to start buffer loading
-        heroVideo.play().catch(err => {
-            console.log("Background muted play prevented: ", err);
-        });
+        window.addEventListener('portfolio:enter', () => {
+            heroVideo.muted = false;
+            heroVideo.play().catch(err => {
+                console.log("Hero video playback failed: ", err);
+            });
+        }, { signal: eventController.signal });
     }
 
-    if (preloader) {
-        // Wait 1.2 seconds for progress bar to visual finish
-        setTimeout(() => {
-            const waitText = document.querySelector('.preloader-wait-text');
-            const loadingText = document.querySelector('.preloader-loading-text');
-            
-            if (waitText) waitText.style.display = 'none';
-            if (loadingText) loadingText.innerHTML = 'READY';
-            
-            // Show the premium Enter button
-            if (preloaderEnterBtn) {
-                preloaderEnterBtn.style.display = 'inline-flex';
-                preloaderEnterBtn.style.alignItems = 'center';
-            }
-        }, 1200);
+    // Replay button display controller based on playback states
+    if (heroVideo && videoReplayBtn) {
+        const showReplayBtn = () => {
+            videoReplayBtn.style.display = 'inline-flex';
+            videoReplayBtn.style.alignItems = 'center';
+        };
+        const hideReplayBtn = () => {
+            videoReplayBtn.style.display = 'none';
+        };
 
-        // Clicking the Enter button unmutes the voice and starts the portfolio
-        if (preloaderEnterBtn) {
-            preloaderEnterBtn.addEventListener('click', () => {
-                if (heroVideo) {
-                    try {
-                        if (heroVideo.readyState >= 1) {
-                            heroVideo.currentTime = 0; // Play from the start
-                        }
-                        heroVideo.muted = false; // Unmute voice
-                        heroVideo.play().catch(err => {
-                            console.log("Audio play failed on click: ", err);
-                        });
-                    } catch (videoErr) {
-                        console.log("Video playback trigger failed: ", videoErr);
-                    }
-                }
-                
-                // Fade out and remove loading screen overlay
-                preloader.classList.add('fade-out');
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 800);
+        heroVideo.addEventListener('play', hideReplayBtn);
+        heroVideo.addEventListener('pause', showReplayBtn);
+        heroVideo.addEventListener('ended', showReplayBtn);
+
+        // Replay button click handler
+        videoReplayBtn.addEventListener('click', () => {
+            heroVideo.currentTime = 0;
+            heroVideo.muted = false; // Keep voice unmuted
+            heroVideo.loop = false;  // Ensure it does not loop automatically
+            heroVideo.play().catch(err => {
+                console.log("Replay failed: ", err);
             });
-        }
-
-        // Replay button display controller based on playback states
-        if (heroVideo && videoReplayBtn) {
-            const showReplayBtn = () => {
-                videoReplayBtn.style.display = 'inline-flex';
-                videoReplayBtn.style.alignItems = 'center';
-            };
-            const hideReplayBtn = () => {
-                videoReplayBtn.style.display = 'none';
-            };
-
-            heroVideo.addEventListener('play', hideReplayBtn);
-            heroVideo.addEventListener('pause', showReplayBtn);
-            heroVideo.addEventListener('ended', showReplayBtn);
-
-            // Replay button click handler
-            videoReplayBtn.addEventListener('click', () => {
-                heroVideo.currentTime = 0;
-                heroVideo.muted = false; // Keep voice unmuted
-                heroVideo.loop = false;  // Ensure it does not loop automatically
-                heroVideo.play().catch(err => {
-                    console.log("Replay failed: ", err);
-                });
-            });
-        }
+        });
     }
 
     // Skills Section Video Replay Handler
@@ -586,10 +532,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!e.target.closest('.tech-diagnostic-module')) {
             techModules.forEach(m => m.classList.remove('active'));
         }
-    });
+    }, { signal: eventController.signal });
 
 
-});
+    return () => {
+        eventController.abort();
+        timeouts.forEach(clearTimeout);
+        if (heroVideo) heroVideo.pause();
+        const skillsVideo = document.getElementById('skillsVideo');
+        if (skillsVideo) skillsVideo.pause();
+    };
+}
 
 // ==========================================================================
 // SCREENSHOT & RIGHT-CLICK PROTECTION HANDLERS
@@ -624,10 +577,15 @@ document.addEventListener('keydown', e => {
 
 // 3. Blur page content when window loses focus (Snipping tool / window switching)
 window.addEventListener('blur', () => {
-    document.body.style.filter = 'blur(10px)';
-    document.body.style.transition = 'filter 0.1s ease';
+    document.querySelectorAll('#root > :not(#gl):not(#grain):not(#pre):not(#btn)').forEach(element => {
+        element.style.filter = 'blur(10px)';
+        element.style.transition = 'filter 0.1s ease';
+    });
 });
 
 window.addEventListener('focus', () => {
-    document.body.style.filter = 'none';
+    document.querySelectorAll('#root > :not(#gl):not(#grain):not(#pre):not(#btn)').forEach(element => {
+        element.style.filter = '';
+        element.style.transition = '';
+    });
 });
